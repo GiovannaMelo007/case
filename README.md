@@ -6,13 +6,14 @@ Estrutura do Projeto
 Abaixo estão descritas as funcionalidades de cada parte do código e os arquivos do projeto:
 
 Arquivos do Projeto
+
 ibge_utils.py: Responsável por processar os dados populacionais fornecidos pelo IBGE.
 
 sidra_utils.py: Responsável por processar os dados sobre as empresas de construção (obtidos da API SIDRA).
 
 
 
- Coleta dos Dados
+Coleta dos Dados
 Para coletar os dados necessários para a análise, utilizamos os seguintes fontes:
 
 Empresas de construção: Os dados de empresas de construção foram obtidos através da API do SIDRA, especificamente da Tabela 1757, que contém informações sobre empresas ativas por região e faixa de pessoal ocupado.
@@ -21,7 +22,7 @@ Projeção populacional: A estimativa da população por faixa etária foi obtid
 
 ## Módulos Principais
 
-### 1. `ibge_utils.py`
+### 1. 'ibge_utils.py'
 **Função**: Processamento de dados populacionais do IBGE.
 
 **Principais funcionalidades**:
@@ -34,11 +35,10 @@ Projeção populacional: A estimativa da população por faixa etária foi obtid
   - Remove valores inválidos e converte dados para inteiros
   - Agrupa dados por estado (UF) e ano
 
-### 2. `sidra_util.py`
+### 2. 'sidra_util.py'
 **Função**: Processamento de dados de empresas ativas (SIDRA/IBGE).
 
 **Principais funcionalidades**:
-- `processar_dados_empresas(arquivo_csv, df_populacao_final)`:
   - Lê CSV da Tabela 1757 do SIDRA
   - Ajusta nomes de colunas e remove cabeçalhos extras
   - Filtra dados de "Total" de pessoal ocupado (2007-2020)
@@ -46,26 +46,26 @@ Projeção populacional: A estimativa da população por faixa etária foi obtid
   - Realiza merge com dados populacionais
   - Calcula razão População/Empresas Ativas por estado/ano
 
-### 3. `analise_temporal.py`
+### 3. 'analise_temporal.py'
 **Função**: Análise temporal com regressão linear.
 
 **Principais funções**:
-- `carregar_dados(arquivo_csv)`: Carrega CSV com razão calculada
-- `projetar_razao()`: Aplica regressão linear para estimar valores futuros
-- `visualizar_projecao()`: Gera gráficos com série histórica e projeções
-- `analise_temporal()`: Executa fluxo completo de análise
+- 'carregar_dados': Carrega CSV com razão calculada
+- 'projetar_razao()': Aplica regressão linear para estimar valores futuros
+- 'visualizar_projecao()': Gera gráficos com série histórica e projeções
+- 'analise_temporal()': Executa fluxo completo de análise
 
-### 4. `analise.py`
+### 4. 'analise.py'
 **Função**: Análise temporal com Média Móvel.
 
 **Principais funções**:
-- `analise_temporal_media_movel()`:
+- analise_temporal_media_movel():
   - Aplica média móvel à série histórica
   - Projeta valores futuros baseados na tendência
   - Retorna previsões em formato de dicionário
   - Gera gráficos comparativos
 
-### 5. `grafico_e_cluster.py`
+### 5. 'grafico_e_cluster.py'
 **Função**: Clusterização e visualização de dados.
 
 **Principais funcionalidades**:
@@ -79,8 +79,8 @@ Projeção populacional: A estimativa da população por faixa etária foi obtid
 
 ## Fluxo de Análise
 
-1. Processamento dos dados populacionais (`ibge_utils.py`)
-2. Processamento dos dados de empresas (`sidra_util.py`)
+1. Processamento dos dados populacionais ('ibge_utils.py')
+2. Processamento dos dados de empresas ('sidra_util.py')
 3. Cálculo da razão População/Empresas
 4. Análise temporal (regressão linear ou média móvel)
 5. Clusterização e classificação das regiões
@@ -100,15 +100,14 @@ As regiões são classificadas em:
 
 ## Como Usar
 
-1. Instale as dependências: `pip install -r requirements.txt`
+1. Instale as dependências: 'pip install -r requirements.txt'
 2. Execute os scripts na ordem:
-   - Processamento de dados (`ibge_utils.py` e `sidra_util.py`)
-   - Análises (`analise_temporal.py` ou `analise.py`)
-   - Clusterização (`grafico_e_cluster.py`)
+   - Processamento de dados ('ibge_utils.py' e 'sidra_util.py')
+   - Análises ('analise_temporal.py' ou 'analise.py')
+   - Clusterização ('grafico_e_cluster.py')
 
 ## Saídas
 
 - DataFrames com dados processados
 - Gráficos de evolução temporal
 - Classificação das regiões por cluster
-- Projeções para anos futuros
